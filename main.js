@@ -1,18 +1,39 @@
+// Array de productos con precios
+const productos = [
+    { id: '1', nombre: 'TUBOS PRO', precio: 4200 },
+    { id: '2', nombre: 'BOTELLAS', precio: 7000 },
+    { id: '3', nombre: 'PACKS', precio: 15500 }
+];
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("boton-ingresar").addEventListener("click", ingresar);
+});
+
+function ingresar() {
+    let nombre = document.getElementById("nombre").value;
+    let apellido = document.getElementById("apellido").value;
+
+    if (nombre && apellido) {
+        saludo(nombre, apellido);
+        document.getElementById("formulario-nombre").style.display = "none";
+        document.getElementById("opciones").style.display = "block";
+    } else {
+        alert("Por favor, ingresa tu nombre y apellido.");
+    }
+}
+
 function saludo(nombre, apellido) {
     alert("Hola " + nombre + " " + apellido + ", has llegado al portal extraño.");
 }
 
 function mostrarPrecios(opcion) {
-    switch(opcion) {
-        case '1':
-            alert("El precio de TUBOS PRO es $4200");
-            break;
-        case '2':
-            alert("El precio de BOTELLAS es $7000");
-            break;
-        case '3':
-            alert("El precio de PACKS es $15500");
-            break;
+    // Buscar el producto por id en el array
+    const producto = productos.find(p => p.id === opcion);
+
+    if (producto) {
+        alert(`El precio de ${producto.nombre} es $${producto.precio}`);
+    } else {
+        alert("Opción no válida.");
     }
 }
 
@@ -20,44 +41,7 @@ function realizarCompra() {
     alert("¡Felicitaciones! Tu compra en nuestra Tienda Extraña ha sido exitosa.");
 }
 
-function elegirAccion(opcion) {
-    let accion = prompt("Elige una acción: 1. Mostrar Precios, 2. Comprar, 3. Terminar");
-
-    switch(accion) {
-        case '1':
-            mostrarPrecios(opcion);
-            break;
-        case '2':
-            realizarCompra();
-            break;
-        case '3':
-            alert("Gracias por visitar nuestra tienda. ¡Hasta luego!");
-            break;
-        default:
-            alert("Opción no válida.");
-    }
-}
-
-function elegirOpcion() {
-    let opcion = prompt("Elige una opción: 1. TUBOS PRO, 2. BOTELLAS, 3. PACKS");
-    
-    if(opcion === '1' || opcion === '2' || opcion === '3') {
-        elegirAccion(opcion);
-    } else {
-        alert("Opción no válida.");
-    }
-}
-
-
-while(true) {
-    let nombre = prompt("Ingresa tu nombre:");
-    let apellido = prompt("Ingresa tu apellido:");
-
-    if(nombre && apellido) {
-        saludo(nombre, apellido);
-        elegirOpcion();
-        break;  
-    } else {
-        alert("Por favor, ingresa tu nombre y apellido.");
-    }
+function terminar() {
+    alert("Gracias por visitar nuestra tienda. ¡Hasta luego!");
+    document.getElementById("opciones").style.display = "none";
 }

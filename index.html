@@ -1,15 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tienda Extraña</title>
 </head>
 <body>
-    
+    <h1>Bienvenido a la Tienda Extraña</h1>
 
-    <h1>Strange Brewing</h1>
+    <!-- Formulario para ingresar nombre y apellido -->
+    <div id="formulario-nombre">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre">
+        <br><br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido">
+        <br><br>
+        <button id="boton-ingresar">Ingresar</button>
+    </div>
 
-    <script src="./main.js"></script>
+    <!-- Opciones ocultas que aparecerán después de ingresar el nombre y apellido -->
+    <div id="opciones" style="display:none;">
+        <h2>Elige una opción:</h2>
+        <button onclick="mostrarPrecios('1')">TUBOS PRO</button>
+        <button onclick="mostrarPrecios('2')">BOTELLAS</button>
+        <button onclick="mostrarPrecios('3')">PACKS</button>
+        <br><br>
+        <button onclick="realizarCompra()">Comprar</button>
+        <button onclick="terminar()">Terminar</button>
+    </div>
+
+    <script src="/main.js"></script>
 </body>
 </html>
+
+
+
+
