@@ -1,4 +1,4 @@
-// Array de productos con precios
+
 const productos = [
     { id: '1', nombre: 'TUBOS PRO', precio: 4200 },
     { id: '2', nombre: 'BOTELLAS', precio: 7000 },
@@ -27,7 +27,6 @@ function saludo(nombre, apellido) {
 }
 
 function mostrarPrecios(opcion) {
-    // Buscar el producto por id en el array
     const producto = productos.find(p => p.id === opcion);
 
     if (producto) {
