@@ -8,7 +8,6 @@
 <body>
     <h1>Bienvenido a la Tienda Extraña</h1>
 
-    <!-- Formulario para ingresar nombre y apellido -->
     <div id="formulario-nombre">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre">
@@ -19,21 +18,23 @@
         <button id="boton-ingresar">Ingresar</button>
     </div>
 
-    <!-- Opciones ocultas que aparecerán después de ingresar el nombre y apellido -->
     <div id="opciones" style="display:none;">
         <h2>Elige una opción:</h2>
-        <button onclick="mostrarPrecios('1')">TUBOS PRO</button>
-        <button onclick="mostrarPrecios('2')">BOTELLAS</button>
-        <button onclick="mostrarPrecios('3')">PACKS</button>
+        <select id="mostrar-precios">
+            <option value="" disabled selected>Selecciona un producto</option>
+            <option value="1">TUBOS PRO</option>
+            <option value="2">BOTELLAS</option>
+            <option value="3">PACKS</option>
+        </select>
         <br><br>
-        <button onclick="realizarCompra()">Comprar</button>
-        <button onclick="terminar()">Terminar</button>
+        <button id="boton-comprar">Comprar</button>
+        <button id="boton-terminar">Terminar</button>
+        
+        <p id="resultado-precio"></p>
     </div>
+
+    <p id="resultado-compra"></p>
 
     <script src="/main.js"></script>
 </body>
 </html>
-
-
-
-

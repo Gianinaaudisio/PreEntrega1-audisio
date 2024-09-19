@@ -5,8 +5,14 @@ const productos = [
     { id: '3', nombre: 'PACKS', precio: 15500 }
 ];
 
+
 document.addEventListener("DOMContentLoaded", function() {
+    localStorage.setItem('productos', JSON.stringify(productos)); 
     document.getElementById("boton-ingresar").addEventListener("click", ingresar);
+    
+    document.getElementById("mostrar-precios").addEventListener("change", mostrarPrecios);
+    document.getElementById("boton-comprar").addEventListener("click", realizarCompra);
+    document.getElementById("boton-terminar").addEventListener("click", terminar);
 });
 
 function ingresar() {
@@ -26,21 +32,30 @@ function saludo(nombre, apellido) {
     alert("Hola " + nombre + " " + apellido + ", has llegado al portal extraño.");
 }
 
-function mostrarPrecios(opcion) {
-    const producto = productos.find(p => p.id === opcion);
+function mostrarPrecios() {
+    
+    const opcion = document.getElementById("mostrar-precios").value;
+    
+    
+    const productosGuardados = JSON.parse(localStorage.getItem('productos')) || [];
+    const producto = productosGuardados.find(p => p.id === opcion);
 
     if (producto) {
-        alert(`El precio de ${producto.nombre} es $${producto.precio}`);
+        
+        document.getElementById("resultado-precio").textContent = `El precio de ${producto.nombre} es $${producto.precio}`;
     } else {
-        alert("Opción no válida.");
+        document.getElementById("resultado-precio").textContent = "Opción no válida.";
     }
 }
 
 function realizarCompra() {
-    alert("¡Felicitaciones! Tu compra en nuestra Tienda Extraña ha sido exitosa.");
+    
+    document.getElementById("resultado-compra").textContent = "¡Felicitaciones! Tu compra en nuestra Tienda Extraña ha sido exitosa.";
 }
 
 function terminar() {
-    alert("Gracias por visitar nuestra tienda. ¡Hasta luego!");
+    
     document.getElementById("opciones").style.display = "none";
+    
+    document.getElementById("resultado-compra").textContent = "Gracias por visitar nuestra tienda. ¡Hasta luego!";
 }
